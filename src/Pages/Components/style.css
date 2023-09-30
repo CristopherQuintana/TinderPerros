@@ -1,0 +1,18 @@
+/* imagenPerro */
+
+.tamaño-perro {
+    max-height: 50vh;
+}
+
+/* scroll */
+
+.scroll {
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+body {
+    background-image: url(Dog_face_pattern_and_bones.jpg);
+    background-size: cover;
+}
+ 
