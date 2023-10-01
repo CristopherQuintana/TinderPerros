@@ -13,15 +13,11 @@ export default function Home() {
   const [cambio, setCambio] = useState('');
   const {data: perrito, isLoading, isError} = useQueryRandomPerro(['cambio', cambio]);
   const handleButtonAceptado = () => {
-    setAceptado([{url: perrito.message, 
-                  nombre: perrito.nombre,
-                  descripcion: perrito.descripcion}, ...aceptado])
+    setAceptado([perrito, ...aceptado])
     setCambio(perrito.message)
   }
   const handleButtonRechazado = () => {
-    setRechazado([{url: perrito.message, 
-                  nombre: perrito.nombre,
-                  descripcion: perrito.descripcion}, ...rechazado])
+    setRechazado([perrito, ...rechazado])
     setCambio(perrito.message)
   }
   const handleButtonAceptadoArr = (valor) => {
@@ -48,13 +44,13 @@ export default function Home() {
     
   const aceptadoCards = aceptado.map((valor, index) => (
     <div key={index}>
-      <CardPerro url={valor.url} nombre={valor.nombre} buttons={generateButton("Rechazar", () => handleButtonAceptadoArr(valor))} expand={true} hidden={valor.descripcion}/>
+      <CardPerro url={valor.message} nombre={valor.nombre} buttons={generateButton("Rechazar", () => handleButtonAceptadoArr(valor))} expand={true} hidden={valor.descripcion}/>
     </div>
   ));
   
   const rechazadoCards = rechazado.map((valor, index) => (
     <div key={index}>
-      <CardPerro url={valor.url} nombre={valor.nombre} buttons={generateButton("Aceptar", () => handleButtonRechazadoArr(valor))} expand={true} hidden={valor.descripcion}/>
+      <CardPerro url={valor.message} nombre={valor.nombre} buttons={generateButton("Aceptar", () => handleButtonRechazadoArr(valor))} expand={true} hidden={valor.descripcion}/>
     </div>
   ));
   
