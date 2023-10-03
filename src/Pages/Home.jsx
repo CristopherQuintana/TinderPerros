@@ -65,11 +65,11 @@ export default function Home() {
       <Box>
         <Grid container spacing={2} alignItems='center' justifyContent='center'>
           <Grid item xs={4} className='scroll'>
-            {aceptadoCards}
+            {isLoading && <LinearProgress sx={{minWidth:1}}/>}
+            <CardPerro url={perrito?.message} error={isError} buttons={buttonsAR} nombre={perrito?.nombre} content={perrito?.descripcion} expand={false} />
           </Grid>
           <Grid item xs={4}>
-            {isLoading && <LinearProgress/>}
-            <CardPerro url={perrito?.message} error={isError} buttons={buttonsAR} nombre={perrito?.nombre} content={perrito?.descripcion} expand={false} />
+            {aceptadoCards}
           </Grid>
           <Grid item xs={4} className='scroll'>
             {rechazadoCards}
