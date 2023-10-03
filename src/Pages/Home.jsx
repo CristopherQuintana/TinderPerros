@@ -64,11 +64,11 @@ export default function Home() {
     <>
       <Box>
         <Grid container spacing={2} alignItems='center' justifyContent='center'>
-          <Grid item xs={4} className='scroll'>
+          <Grid item xs={4}>
             {isLoading && <LinearProgress sx={{minWidth:1}}/>}
             <CardPerro url={perrito?.message} error={isError} buttons={buttonsAR} nombre={perrito?.nombre} content={perrito?.descripcion} expand={false} />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={4} className='scroll'>
             {aceptadoCards}
           </Grid>
           <Grid item xs={4} className='scroll'>
