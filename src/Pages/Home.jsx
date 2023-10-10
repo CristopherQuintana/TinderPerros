@@ -44,13 +44,13 @@ export default function Home() {
     
   const aceptadoCards = aceptado.map((valor, index) => (
     <div key={index}>
-      <CardPerro url={valor.message} nombre={valor.nombre} buttons={generateButton("Rechazar", () => handleButtonAceptadoArr(valor))} expand={true} hidden={valor.descripcion}/>
+      <CardPerro url={valor.message} nombre={valor.nombre} buttons={generateButton("Rechazar", () => handleButtonAceptadoArr(valor))} expand={true} hidden={valor.descripcion} loading={false}/>
     </div>
   ));
   
   const rechazadoCards = rechazado.map((valor, index) => (
     <div key={index}>
-      <CardPerro url={valor.message} nombre={valor.nombre} buttons={generateButton("Aceptar", () => handleButtonRechazadoArr(valor))} expand={true} hidden={valor.descripcion}/>
+      <CardPerro url={valor.message} nombre={valor.nombre} buttons={generateButton("Aceptar", () => handleButtonRechazadoArr(valor))} expand={true} hidden={valor.descripcion} loading={false}/>
     </div>
   ));
   
@@ -64,14 +64,13 @@ export default function Home() {
     <>
       <Box>
         <Grid container spacing={2} alignItems='center' justifyContent='center'>
-          <Grid item xs={4}>
-            {isLoading && <LinearProgress sx={{minWidth:1}}/>}
-            <CardPerro url={perrito?.message} error={isError} buttons={buttonsAR} nombre={perrito?.nombre} content={perrito?.descripcion} expand={false} />
+          <Grid item xs>
+            <CardPerro url={perrito?.message} error={isError} buttons={buttonsAR} nombre={perrito?.nombre} content={perrito?.descripcion} expand={false} loading={isLoading} />
           </Grid>
-          <Grid item xs={4} className='scroll'>
+          <Grid item xs className='scroll'>
             {aceptadoCards}
           </Grid>
-          <Grid item xs={4} className='scroll'>
+          <Grid item xs className='scroll'>
             {rechazadoCards}
           </Grid>
         </Grid>
