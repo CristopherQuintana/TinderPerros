@@ -1,7 +1,6 @@
 import { Alert, Card, CardActions, CardContent, CardMedia, Collapse, IconButton, LinearProgress, styled } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import './style.css'
-import { useState } from "react";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -19,9 +18,9 @@ export default function CardPerro(props) {
     return (
         <>
           <Card>
-            {props.loading && <LinearProgress sx={{objectFit:'cover'}}/>}    
+            {props.loading && <LinearProgress/>}    
             {props.error && <Alert severity="error">ese perro no existe</Alert>}
-            <CardMedia component="img" image={props.url} className="tamaño-perro" />
+            <CardMedia component="img" image={props.url} className="tamaño-perro"/>
             <CardContent>
               Nombre: {props.nombre}
               {props.content}

@@ -96,7 +96,7 @@ export default function Home() {
 
   return (
     <>
-      <Box>
+      <Box sx={{width:'100%'}}>
         <Grid container spacing={2} alignItems='center' justifyContent='center'>
           <Grid item xs>
             <CardPerro url={perrito?.message} error={isError} buttons={buttonsAR} nombre={perrito?.nombre} content={perrito?.descripcion} expand={false} loading={isLoading} />
