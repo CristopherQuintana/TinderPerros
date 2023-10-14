@@ -15,16 +15,12 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function CardPerro(props) {
-  const [expanded, setExpanded] = useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
     return (
         <>
-          <Card sx={{width: '100%'}}>
+          <Card>
+            {props.loading && <LinearProgress sx={{objectFit:'cover'}}/>}    
             {props.error && <Alert severity="error">ese perro no existe</Alert>}
-            {props.loading && <LinearProgress sx={{ width: '100%' }}/>}    
             <CardMedia component="img" image={props.url} className="tamaño-perro" />
             <CardContent>
               Nombre: {props.nombre}
@@ -33,15 +29,15 @@ export default function CardPerro(props) {
             <CardActions disableSpacing>
               {props.buttons}
               {props.expand && <ExpandMore
-                expand={expanded}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
+                expand={props.expanded}
+                onClick={props.onExpand}
+                aria-expanded={props.expanded}
                 aria-label="show more"
                 >
                 <ExpandMoreIcon />
               </ExpandMore>}
             </CardActions>
-            {props.expand && <Collapse in={expanded} timeout="auto" unmountOnExit>
+            {props.expand && <Collapse in={props.expanded} timeout="auto" unmountOnExit>
             <CardContent>{props.hidden}</CardContent>
               </Collapse>}
           </Card>
